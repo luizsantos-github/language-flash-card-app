@@ -4,7 +4,7 @@ import random
 new_word = {}
 # ---------------------------- DATA ------------------------------- #
 try:
-    df = pd.read_csv("data/data_to_learn.csv.csv")
+    df = pd.read_csv("data/data_to_learn.csv")
 except FileNotFoundError:
     df = pd.read_csv("data/korean_words.csv")
 
@@ -25,7 +25,7 @@ def next_card():
     global new_word, flip_timer
     window.after_cancel(flip_timer)
     new_word = random.choice(words)
-    print(new_word)
+    print(f"Remaining words: {len(words)}")
     canvas.itemconfig(canvas_img, image=img_front_card)
     canvas.itemconfig(title_text, text="Korean", fill="black")
     canvas.itemconfig(word_text, text=new_word['Korean'], fill="black")
